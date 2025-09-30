@@ -19,21 +19,25 @@ function showData(dataArray) {
 }
 
 // Escribe el código necesario para realizar el fetch al archivo con los datos y mostrar los estudiantes con la función showData
-function showData {
+
+function showData (data) {
   const container = document.getElementById ("container");
   container.innerHTML="";
 
   data.forEach(item => {
-     container.innerHTML += `<p>${item.nombre} - $${item.precio}</p>`;
+     container.innerHTML += `<p>${item.name} - ${item.lastname}</p>`;
   });
 }
 
-
-    fetch("data.json")
+    fetch("json/data.json")
     .then(response => response.json())
     .then(data => {
-    showData;
-    
-  });
+    console.log("Datos cargados:", data);
+    showData (data.students);
 
-  .catch(error => console.error("Error al cargar los datos:", error));
+  })
+
+  .catch (error => {
+    console.error ("Error al cargar Json:", error);
+
+  });
